@@ -6,32 +6,40 @@
  */
 
 class Store{
-    private $table;
+    private $table="store";
     private $conection;
     
     public function __construct() {
         
     }
-    public function insertIntoTable() {
-        $cod;
-        $name;
-        $tlf;
-        $sql = "INSERT INTO store (cod, name, tlf) VALUES" .
+    public function insertIntoTableStore($cod,$name,$tlf) {
+        
+        $sql = "INSERT INTO ".$this->table. "(cod, name, tlf) VALUES" .
                             "($cod, '$name', '$tlf')";
         
-        return $sql;
+        $stmt = $this->conection->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
     
-    public function updateTable(){
-         $cod;
-        $name;
-        $tlf;
-        $sql ="UPDATE store SET name='$name', tlf='$tlf' WHERE cod='$cod'";
+    public function updateTableStore($cod, $name, $tlf){
         
-        return $sql;
+        $sql ="UPDATE ".$this->table. "SET name='$name', tlf='$tlf' WHERE cod='$cod'";
+         $stmt = $this->conection->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
     
-    public function deleteFromTable(){
+    public function deleteFromTableStorebyCode($cod){
         
+        $sql ="DELETE from ".$this->table." WHERE cod='$cod'";
+        $stmt = $this->conection->prepare($sql);
+        $stmt->execute([$cod]);
+    }
+ 
+     public function getStores() {
+        $sql = "SELECT cod, name, tlf FROM store";
+        $stmt = $this->conection->prepare($sql);
+        return $stmt->fetchAll();
     }
 }
