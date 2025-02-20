@@ -2,7 +2,7 @@
 
 /* Database connection values */
 define("DB_HOST", "localhost");
-define("DB", "mvc_example");
+define("DB", "dwes");
 define("DB_USER", "dwes");
 define("DB_PASS", "dwes");
 
