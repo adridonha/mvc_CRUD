@@ -23,12 +23,12 @@ class Db {
             echo $e->getMessage();
             exit();
         }
-		public static function getInstance() {
+	}
+	public static function getInstance() {
         if (self::$instance == null) {
             self::$instance = new Db();
         }
         return self::$instance->conection;
     }
-	}
 }
 ?>
