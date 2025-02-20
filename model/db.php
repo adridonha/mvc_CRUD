@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../config/config.php';
 
 class Db {
-
+	private static $instance = null;
 	private $host;
 	private $db;
 	private $user;
