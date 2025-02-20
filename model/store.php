@@ -6,40 +6,42 @@
  */
 
 class Store{
+    
+   
     private $table="store";
-    private $conection;
+    private $db;
     
     public function __construct() {
-        
+        $this->db = Db::getInstance();
     }
     public function insertIntoTableStore($cod,$name,$tlf) {
         
         $sql = "INSERT INTO ".$this->table. "(cod, name, tlf) VALUES" .
                             "($cod, '$name', '$tlf')";
         
-        $stmt = $this->conection->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll();
+        $stmt = $this->db->prepare($sql);
+        
+        return $stmt->execute();
     }
     
     public function updateTableStore($cod, $name, $tlf){
         
         $sql ="UPDATE ".$this->table. "SET name='$name', tlf='$tlf' WHERE cod='$cod'";
-         $stmt = $this->conection->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll();
+         $stmt = $this->db->prepare($sql);
+        
+        return $stmt->execute();
     }
     
     public function deleteFromTableStorebyCode($cod){
         
         $sql ="DELETE from ".$this->table." WHERE cod='$cod'";
-        $stmt = $this->conection->prepare($sql);
-        $stmt->execute([$cod]);
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([$cod]);
     }
  
      public function getStores() {
-        $sql = "SELECT cod, name, tlf FROM store";
-        $stmt = $this->conection->prepare($sql);
-        return $stmt->fetchAll();
+        $sql = "SELECT cod, name, tlf FROM ".$this->table;
+        $stmt = $this->db->prepare($sql);
+        return $stmt->fetchAll($this->db::FETCH_ASSOC);
     }
 }
