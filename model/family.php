@@ -58,23 +58,21 @@ class Family {
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute(['cod' => $this->cod]);
     }
-    
-
     public function displayFamilyTable() {
         $families = $this->getAllFamilies();
-    
         echo "<table border='1'>";
-        echo "<tr><th>Cod</th><th>Name</th></tr>";
-    
+        echo "<tr><th>Código</th><th>Nombre</th></tr>";
         foreach ($families as $family) {
             echo "<tr>";
-            echo "<td>" . htmlspecialchars($family['cod']) . "</td>";
-            echo "<td>" . htmlspecialchars($family['name']) . "</td>";
+            echo "<td>{$family['cod']}</td>";
+            echo "<td>{$family['name']}</td>";
             echo "</tr>";
         }
-    
         echo "</table>";
     }
     
+    
 }
+$family = new Family();
+$family->displayFamilyTable();
 
