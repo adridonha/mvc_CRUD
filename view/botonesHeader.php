@@ -8,10 +8,10 @@
 </head>
 <body>
     <div class="btn-container">
-        <button class="btn">Products</button>
-        <button class="btn">Families</button>
-        <button class="btn">Stocks</button>
-        <button class="btn">Stores</button>
+        <button class="btn"><a href="/model/products.php">Products</a></button>
+        <button class="btn"><a href="/model/families.php">Families</a></button>
+        <button class="btn"><a href="/model/stock.php">Stocks</a></button>
+        <button class="btn"><a href="/model/stores.php">Stores</a></button>
     </div>
 </body>
 </html>
