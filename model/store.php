@@ -44,8 +44,7 @@ class Store{
  
      public function getStores() {
         $sql = "SELECT cod, name, tlf FROM ".$this->table;
-        $stmt = $this->db->prepare($sql);
-        return $stmt->fetchAll($this->db::FETCH_ASSOC);
+        return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
      public function displayStoreTable() {
         $stock = $this->getStores();
