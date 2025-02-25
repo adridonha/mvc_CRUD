@@ -1,1 +1,47 @@
+<?php
+// vistaStore.php
 
+// Incluir el archivo del modelo
+require_once '../model/Store.php';
+
+// Instanciar el modelo Store
+$store = new Store();
+
+// Obtener los datos de las tiendas
+$stores = $store->getStores();
+
+// Función para mostrar la tabla de tiendas
+function displayStoreTable($stores) {
+    echo "<table border='1'>";
+    echo "<tr><th>Cod</th><th>Name</th><th>Tlf</th></tr>";
+    
+    // Formulario para insertar una nueva tienda
+    echo "<form action='" . $_SERVER['PHP_SELF'] . "' method='post'>";
+    echo "<tr>";
+    echo "<td><input type='text' name='cod' /></td>";
+    echo "<td><input type='text' name='name' /></td>";
+    echo "<td><input type='text' name='tlf' /></td>";
+    echo "</tr>";
+    echo "</table>";
+    echo "<input type='submit' name='insert' value='Insert' />";
+    echo "</form>";
+    
+    // Mostrar las tiendas existentes
+    foreach ($stores as $row) {
+        echo "<form action='" . $_SERVER['PHP_SELF'] . "' method='post'>";
+        echo "<table border='1'>";
+        echo "<tr>";
+        echo "<td><input type='text' name='cod' value='" . $row['cod'] . "' disabled/></td>";
+        echo "<td><input type='text' name='name' value='" . $row['name'] . "' /></td>";
+        echo "<td><input type='text' name='tlf' value='" . $row['tlf'] . "' /></td>";
+        echo "</tr>";
+        echo "</table>";
+        echo "<input type='submit' name='update' value='Update' />";
+        echo "<input type='submit' name='delete' value='Delete' />";
+        echo "</form>";
+    }
+}
+
+// Llamar a la función para mostrar la tabla
+displayStoreTable($stores);
+?>
