@@ -6,8 +6,8 @@ define("DB", "dwes");
 define("DB_USER", "dwes");
 define("DB_PASS", "dwes");
 
-/* Default options
-define("DEFAULT_CONTROLLER", "note");
-define("DEFAULT_ACTION", "list");
- */
+/* Default options */
+define("DEFAULT_CONTROLLER", "product");
+define("DEFAULT_ACTION", "index");
+
 ?>
