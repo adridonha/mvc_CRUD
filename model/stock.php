@@ -44,20 +44,5 @@ class Stock {
         $sql = "SELECT cod, name FROM store";
         return $this->db->query($sql)->fetchAll(PDO::FETCH_KEY_PAIR);
     }
-    public function displayStockTable() {
-        $stock = $this->getStock();
-        echo "<table border='1'>";
-        echo "<tr><th>Product</th><th>Store</th><th>Units</th></tr>";
-        foreach ($stock as $row) {
-            echo "<tr>";
-            echo "<td>{$row['product']}</td>";
-            echo "<td>{$row['store']}</td>";
-            echo "<td>{$row['units']}</td>";
-            echo "</tr>";
-        }
-        echo "</table>";
-    }
-}
-$stock = new Stock();
-$stock->displayStockTable();
+
 
