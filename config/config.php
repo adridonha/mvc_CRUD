@@ -10,5 +10,4 @@ define("DB_PASS", "dwes");
 define("DEFAULT_CONTROLLER", "note");
 define("DEFAULT_ACTION", "list");
  */
-
 ?>
