@@ -44,5 +44,5 @@ class Stock {
         $sql = "SELECT cod, name FROM store";
         return $this->db->query($sql)->fetchAll(PDO::FETCH_KEY_PAIR);
     }
-
+}
 
